@@ -37,16 +37,21 @@ def contiguous_sum(list)
 end 
 
 def contiguous_n(list)
-  max_sum = 0
+  
   i = 0 
-  j = 0 
+  max_sum = 0 
+  current_sum = 0
   while i < list.length
-     max_sum = list[i..j].sum if max_sum < list[i..j].sum
-    if j == list.length
-      i += 1 
-    else 
-      j += 1 
+    
+    current_sum += list[i]
+    if current_sum > max_sum
+      max_sum = current_sum 
     end 
+
+    if current_sum < 0 
+      current_sum = 0 
+    end 
+    i += 1 
   end 
   max_sum
 end 
